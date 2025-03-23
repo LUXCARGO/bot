@@ -1,0 +1,49 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+#logo {
+    max-width: 150px;
+}
+
+input[type="text"], 
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+.loading {
+    display: none;
+    margin-top: 20px;
+}
+
+.success-message {
+    display: none;
+    color: green;
+    margin-top: 20px;
+}
