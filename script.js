@@ -1,12 +1,22 @@
 async function sendData() {
-    const fio = document.getElementById('fio').value;
-    const phone = document.getElementById('phone').value;
-    const location = document.querySelector('input[name="location"]:checked').value;
+    const fioInput = document.getElementById('fio');
+    const phoneInput = document.getElementById('phone');
+    const locationInput = document.querySelector('input[name="location"]:checked');
 
-    if (!fio || phone.length !== 9) {
-        alert('Пожалуйста, заполните все поля корректно.');
+    const fio = fioInput.value.trim();
+    const phone = phoneInput.value.trim();
+
+    if (!fio || !phone || phone.length !== 9 || !/^\d{9}$/.test(phone)) {
+        alert('Пожалуйста, введите ФИО и корректный номер (9 цифр без +992).');
         return;
     }
+
+    if (!locationInput) {
+        alert('Пожалуйста, выберите локацию.');
+        return;
+    }
+
+    const location = locationInput.value;
 
     const now = new Date();
     const date = now.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -14,8 +24,8 @@ async function sendData() {
 
     const message = `🔮 Новый клиент пришёл за адресом в ${location} в 📆 ${date} ⏰ ${time}. Вот его данные:\n👥 ФИО: ${fio}\n📟 Номер телефона: +992${phone}`;
 
-    const botToken = '7109212599:AAH5zrFBwZujMupr73AgIe1qD1KrH0wUPJY'; // Замените на ваш токен бота
-    const chatId = '2502138988'; // Замените на ваш chat ID
+    const botToken = 'YOUR_BOT_TOKEN'; // Замените на ваш токен бота
+    const chatId = 'YOUR_CHAT_ID'; // Замените на ваш chat ID
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     try {
@@ -30,10 +40,11 @@ async function sendData() {
 
         if (response.ok) {
             alert('Данные успешно отправлены!');
-            document.getElementById('fio').value = '';
-            document.getElementById('phone').value = '';
+            fioInput.value = '';
+            phoneInput.value = '';
+            if (locationInput) locationInput.checked = false;
         } else {
-            alert('Ошибка при отправке данных.');
+            alert('Ошибка при отправке данных. Статус: ' + response.status);
         }
     } catch (error) {
         alert('Произошла ошибка: ' + error.message);
