@@ -24,8 +24,8 @@ async function sendData() {
 
     const message = `🔮 Новый клиент пришёл за адресом в ${location} в 📆 ${date} ⏰ ${time}. Вот его данные:\n👥 ФИО: ${fio}\n📟 Номер телефона: +992${phone}`;
 
-    const botToken = 'YOUR_BOT_TOKEN'; // Замените на ваш токен бота
-    const chatId = 'YOUR_CHAT_ID'; // Замените на ваш chat ID
+    const botToken = '7109212599:AAHaLdm3-G8LV8eFF8eEXq4Wgj7Qvas04fQ'; // Замените на ваш токен бота
+    const chatId = '2502138988'; // Замените на ваш chat ID
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     try {
