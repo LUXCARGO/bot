@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander Cargo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Wander Cargo Logo" class="logo">
+        <h1>WANDER CARGO</h1>
+        <h2>Заполните данные ниже:</h2>
+
+        <div class="radio-group">
+            <label><input type="radio" name="location" value="Урумчи" checked> Урумчи</label>
+            <label><input type="radio" name="location" value="Иву"> Иву</label>
+        </div>
+
+        <div class="form-group">
+            <label>Введите ваше ФИО:</label>
+            <input type="text" id="fio" placeholder="ФИО" required>
+        </div>
+
+        <div class="form-group">
+            <label>Введите свой рабочий номер телефона:</label>
+            <div class="phone-input">
+                <span>+992</span>
+                <input type="text" id="phone" maxlength="9" pattern="\d{9}" placeholder="123456789" required onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            </div>
+        </div>
+
+        <button onclick="sendData()">Отправить администратору</button>
+    </div>
+
+    <div class="footer">
+        *Ваши данные будут храниться в полной конфиденциальности. Третьи лица не могут получить доступ к ним.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
